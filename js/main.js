@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   loadPartials();
   initializeAccordion();
-  updateCopyrightYear();
+  // We remove updateCopyrightYear() from here to prevent the race condition
 });
 
 async function loadPartials() {
@@ -22,14 +22,13 @@ async function loadPartials() {
     headerPlaceholder.innerHTML = headerHtml;
     footerPlaceholder.innerHTML = footerHtml;
 
-    // NEW: Initialize mobile menu after header is loaded
     initializeMobileMenu();
+    updateCopyrightYear();
   } catch (error) {
     console.error('Error loading partials:', error);
   }
 }
 
-// NEW FUNCTION for the mobile menu
 function initializeMobileMenu() {
   const menuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -39,7 +38,6 @@ function initializeMobileMenu() {
       mobileMenu.classList.toggle('hidden');
     });
 
-    // Close menu when a link is clicked
     mobileMenu.addEventListener('click', (event) => {
       if (event.target.tagName === 'A') {
         mobileMenu.classList.add('hidden');
