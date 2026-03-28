@@ -1,3 +1,95 @@
+// --- Google Analytics Logic ---
+const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+const TRACKED_HOSTS = new Set(['madideal.com', 'www.madideal.com']);
+
+function trackEvent(eventName, params = {}) {
+  if (typeof window.gtag !== 'function') return;
+  window.gtag('event', eventName, params);
+}
+
+function extractWhatsAppNumber(href) {
+  const waMeMatch = href.match(/wa\.me\/(\d+)/i);
+  if (waMeMatch) return waMeMatch[1];
+
+  const apiMatch = href.match(/[?&]phone=(\d+)/i);
+  if (apiMatch) return apiMatch[1];
+
+  return '';
+}
+
+(function initGoogleAnalytics() {
+  if (!GA_MEASUREMENT_ID || !TRACKED_HOSTS.has(window.location.hostname)) {
+    return;
+  }
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function gtag() {
+    window.dataLayer.push(arguments);
+  };
+
+  const script = document.createElement('script');
+  script.async = true;
+  script.src =
+    `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+  document.head.appendChild(script);
+
+  window.gtag('js', new Date());
+  window.gtag('config', GA_MEASUREMENT_ID, {
+    page_title: document.title,
+    page_path: window.location.pathname + window.location.search,
+    page_location: window.location.href,
+  });
+})();
+
+// --- Google Analytics Event Tracking Logic ---
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a[href]');
+  if (!link) return;
+
+  const href = link.getAttribute('href') || '';
+  const normalizedHref = href.toLowerCase();
+  const linkText =
+    link.textContent.trim() || link.getAttribute('aria-label') || href;
+
+  let eventName = null;
+  const eventParams = {
+    link_text: linkText,
+    link_url: link.href,
+    page_path: window.location.pathname + window.location.search,
+  };
+
+  if (normalizedHref.startsWith('tel:')) {
+    eventName = 'phone_click';
+    eventParams.phone_number = href.replace(/^tel:/i, '').trim();
+  } else if (normalizedHref.startsWith('mailto:')) {
+    eventName = 'email_click';
+  } else if (
+    normalizedHref.includes('wa.me/') ||
+    normalizedHref.includes('whatsapp')
+  ) {
+    eventName = 'whatsapp_click';
+
+    const phoneNumber = extractWhatsAppNumber(link.href);
+    if (phoneNumber) {
+      eventParams.phone_number = phoneNumber;
+    }
+  } else if (normalizedHref.includes('instagram.com/')) {
+    eventName = 'instagram_click';
+  } else if (normalizedHref.includes('facebook.com/')) {
+    eventName = 'facebook_click';
+  } else if (
+    normalizedHref.includes('google.com/maps') ||
+    normalizedHref.includes('maps.google.') ||
+    normalizedHref.includes('maps.app.goo.gl')
+  ) {
+    eventName = 'map_click';
+  }
+
+  if (!eventName) return;
+
+  trackEvent(eventName, eventParams);
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   loadPartials();
   initializeAccordion();
