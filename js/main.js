@@ -1,5 +1,5 @@
 // --- Google Analytics Logic ---
-const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+const GA_MEASUREMENT_ID = 'G-1K7GTVFC96';
 const TRACKED_HOSTS = new Set(['madideal.com', 'www.madideal.com']);
 
 function trackEvent(eventName, params = {}) {
