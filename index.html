@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://madideal.com/image/og-hero.jpg" />
   <meta property="twitter:card" content="summary_large_image" />
   <!-- Styles and Scripts -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <script src="https://elfsightcdn.com/platform.js" defer></script>
   <!-- Schema.org JSON-LD -->
@@ -189,7 +189,7 @@
         <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div class="bg-gray-50 border border-gray-200 overflow-hidden flex flex-col">
             <div class="aspect-square">
-              <img src="image/deck-solution.webp" alt="Deck de madeira em área externa" class="w-full object-cover" />
+              <img src="image/deck-solution.webp" alt="Deck de madeira em área externa" class="w-full object-cover" loading="lazy" />
             </div>
             <div class="p-6 flex flex-col flex-grow">
               <h3 class="text-xl font-bold mb-2 text-gray-900">Decks e Pergolados</h3>
@@ -199,7 +199,7 @@
           </div>
           <div class="bg-gray-50 border border-gray-200 overflow-hidden flex flex-col">
             <div class="aspect-square">
-              <img src="image/doors-solution.webp" alt="Porta de madeira maciça instalada" class="w-full object-cover" />
+              <img src="image/doors-solution.webp" alt="Porta de madeira maciça instalada" class="w-full object-cover" loading="lazy" />
             </div>
             <div class="p-6 flex flex-col flex-grow">
               <h3 class="text-xl font-bold mb-2 text-gray-900">Portas, Janelas e Esquadrias</h3>
@@ -209,7 +209,7 @@
           </div>
           <div class="bg-gray-50 border border-gray-200 overflow-hidden flex flex-col">
             <div class="aspect-square">
-              <img src="image/varejo-solution.webp" alt="Pranchas e tábuas de madeira empilhadas para venda no varejo" class="w-full h-48 object-cover" />
+              <img src="image/varejo-solution.webp" alt="Pranchas e tábuas de madeira empilhadas para venda no varejo" class="w-full h-48 object-cover" loading="lazy" />
             </div>
             <div class="p-6 flex flex-col flex-grow">
               <h3 class="text-xl font-bold mb-2 text-gray-900">Varejo e Projetos Especiais</h3>
@@ -243,7 +243,7 @@
         <p class="text-center -mt-10 mb-12 text-gray-600">Tem mais perguntas? <a href="faq.html" class="text-amber-600 hover:underline font-medium">Veja nossa página completa de Dúvidas Frequentes</a>.</p>
         <div class="space-y-4">
           <div class="border border-gray-200 rounded-lg bg-white">
-            <button class="accordion-button flex justify-between items-center w-full p-5 text-left font-semibold text-lg text-gray-800 hover:bg-gray-50 transition-colors">
+            <button class="accordion-button flex justify-between items-center w-full p-5 text-left font-semibold text-lg text-gray-800 hover:bg-gray-50 transition-colors" aria-expanded="false">
               <span>Vocês também executam a obra do telhado?</span>
               <i class="fas fa-chevron-down accordion-icon transition-transform"></i>
             </button>
@@ -254,7 +254,7 @@
             </div>
           </div>
           <div class="border border-gray-200 rounded-lg bg-white">
-            <button class="accordion-button flex justify-between items-center w-full p-5 text-left font-semibold text-lg text-gray-800 hover:bg-gray-50 transition-colors">
+            <button class="accordion-button flex justify-between items-center w-full p-5 text-left font-semibold text-lg text-gray-800 hover:bg-gray-50 transition-colors" aria-expanded="false">
               <span>Qual a melhor madeira para o meu tipo de telhado?</span>
               <i class="fas fa-chevron-down accordion-icon transition-transform"></i>
             </button>
@@ -265,7 +265,7 @@
             </div>
           </div>
           <div class="border border-gray-200 rounded-lg bg-white">
-            <button class="accordion-button flex justify-between items-center w-full p-5 text-left font-semibold text-lg text-gray-800 hover:bg-gray-50 transition-colors">
+            <button class="accordion-button flex justify-between items-center w-full p-5 text-left font-semibold text-lg text-gray-800 hover:bg-gray-50 transition-colors" aria-expanded="false">
               <span>Vocês me ajudam a calcular a quantidade de material?</span>
               <i class="fas fa-chevron-down accordion-icon transition-transform"></i>
             </button>
@@ -289,7 +289,7 @@
         </div>
         <div class="text-lg space-y-4">
           <p><a href="https://wa.me/5511974149202?text=Olá!%20Gostaria%20de%20fazer%20um%20orçamento%20para%20o%20telhado%20da%20minha%20obra." class="text-amber-600 hover:text-amber-700 font-bold text-xl"><i class="fab fa-whatsapp"></i> (11) 97414-9202</a></p>
-          <p><strong>Telefones Fixo: <a href="tel:+551146573937" class="hover:text-amber-600">(11) 4657-3937</a> / <a href="tel:+551146567222" class="hover:text-amber-600">(11) 4656-7222</a></p>
+          <p><strong>Telefones Fixo:</strong> <a href="tel:+551146573937" class="hover:text-amber-600">(11) 4657-3937</a> / <a href="tel:+551146567222" class="hover:text-amber-600">(11) 4656-7222</a></p>
           <p><strong>Email:</strong> <a href="mailto:mail@madideal.com" class="text-amber-600 hover:text-amber-700">mail@madideal.com</a></p>
           <p><strong>Horário:</strong> Seg-Sex 08:00-17:30 | Sáb 08:00-12:00</p>
         </div>

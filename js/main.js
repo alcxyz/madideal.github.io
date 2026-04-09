@@ -148,6 +148,8 @@ function initializeAccordion() {
       const content = button.nextElementSibling;
       const icon = button.querySelector('.accordion-icon');
 
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!expanded));
       button.classList.toggle('active');
       icon.classList.toggle('rotate-180');
 
